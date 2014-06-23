@@ -9,13 +9,18 @@ mvn package
 java -jar target/microbenchmarks.jar ".*ListBenchmarks.*(listAdd).*" -wi 2 -i 5 -f 1 -t 3
 ```
 
-Which says, run the benchmarks in ListBenchmarks that have method names beginning with listAdd, the flags mean:
--wi 2 means 2 warm up iterations to overcome jvm startup inertia
--i  5 means run 5 actual iterations
--f  1 means run 1 fork
--t  3 means run the benchmarks in 3 threads
+Breaking that down: 
 
+|                                  Fragment                            |                                      Meaning                                     |
+|----------------------------------------------------------------------|----------------------------------------------------------------------------------|
+|java -jar target/microbenchmarks.jar ".*ListBenchmarks.*(listAdd).*"  |run the benchmarks in ListBenchmarks that have method names beginning with listAdd|
+|-wi 2                                                                 |means 2 warm up iterations to overcome jvm startup inertia                        |
+|-i  5                                                                 |means run 5 actual iterations                                                     |
+|-f  1                                                                 |means run 1 fork                                                                  | 
+|-t  3                                                                 |means run the benchmarks in 3 threads                                             |
+ 
 and get results like:
+
 ```bash
 # Run progress: 75.00% complete, ETA 00:00:08
 # Warmup: 2 iterations, 1 s each
